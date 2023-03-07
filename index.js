@@ -9,6 +9,10 @@ app.get('/',(request, response) =>{
     return response.json({message: 'Server is up'});
 })
 
+app.get('/teste',(request, response) =>{
+    return response.send();
+})
+
 app.post('/teste', (request, response) => {
     const {name, date} = request.body;
     return response.json({name, date});
