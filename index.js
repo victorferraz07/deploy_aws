@@ -5,10 +5,10 @@ const mysql = require('mysql');
 const app = express();
 
 const connection = mysql.createConnection({
-    host: 'database-blk.ctmgzsdownph.sa-east-1.rds.amazonaws.com',
-    user: 'admin',
-    password: 'Casa0812!',
-    database: 'dbBlk'
+    host: 'ls-e1041cbd5e7e3afec42e4998862165f8062fad08.cligkavoyphy.us-east-1.rds.amazonaws.com',
+    user: 'dbmasteruser',
+    password: 'Z)L&Ga1u?Ni?uy$!uq{Ivh4>!!0k>VY[',
+    database: 'dbmaster'
   });
 
 
@@ -28,7 +28,7 @@ app.get('/',(request, response) =>{
 
 app.get('/teste', (request, response) => {
     // Recupera as informações do banco de dados
-    const query = 'SELECT name, date FROM mytable ORDER BY id DESC LIMIT 1';
+    const query = 'SELECT name, date FROM status_devices ORDER BY id DESC LIMIT 1';
     connection.query(query, (error, results) => {
       if (error) {
         console.error('Erro ao recuperar informações do banco de dados:', error);
@@ -44,7 +44,7 @@ app.get('/teste', (request, response) => {
 
 app.post('/teste', (request, response) => {
     const {name, date} = request.body;
-    const query = 'INSERT INTO mytable (name, date) VALUES (?, ?)';
+    const query = 'INSERT INTO status_devices (name, date) VALUES (?, ?)';
     connection.query(query, [name, date], (error, results) => {
         if (error) {
           console.error('Erro ao inserir informações no banco de dados:', error);
