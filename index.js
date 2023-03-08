@@ -35,6 +35,7 @@ app.get('/teste', (request, response) => {
         return response.status(500).json({error: 'Erro ao recuperar informações do banco de dados.'});
       } else {
         console.log('Informações recuperadas com sucesso do banco de dados.');
+        console.log('Resultados:', results);
         const {id, status} = results[0];
         return response.json({id, status});
       }
