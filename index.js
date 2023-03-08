@@ -28,7 +28,7 @@ app.get('/',(request, response) =>{
 
 app.get('/teste', (request, response) => {
     // Recupera as informações do banco de dados
-    const query = 'SELECT ID, STATUS FROM status_devices ORDER BY id DESC LIMIT 1';
+    const query = 'SELECT ID, STATUS FROM status_devices ORDER BY id DESC';
     connection.query(query, (error, results) => {
       if (error) {
         console.error('Erro ao recuperar informações do banco de dados:', error);
