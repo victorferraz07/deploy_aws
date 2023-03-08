@@ -36,8 +36,7 @@ app.get('/teste', (request, response) => {
       } else {
         console.log('Informações recuperadas com sucesso do banco de dados.');
         console.log('Resultados:', results);
-        const {id, status} = results[0];
-        return response.json({id, status});
+        return response.json(results);
       }
     });
   });
