@@ -28,30 +28,30 @@ app.get('/',(request, response) =>{
 
 app.get('/teste', (request, response) => {
     // Recupera as informações do banco de dados
-    const query = 'SELECT name, date FROM status_devices ORDER BY id DESC LIMIT 1';
+    const query = 'SELECT ID, STATUS FROM status_devices ORDER BY id DESC LIMIT 1';
     connection.query(query, (error, results) => {
       if (error) {
         console.error('Erro ao recuperar informações do banco de dados:', error);
         return response.status(500).json({error: 'Erro ao recuperar informações do banco de dados.'});
       } else {
         console.log('Informações recuperadas com sucesso do banco de dados.');
-        const {name, date} = results[0];
-        return response.json({name, date});
+        const {id, status} = results[0];
+        return response.json({id, status});
       }
     });
   });
   
 
 app.post('/teste', (request, response) => {
-    const {name, date} = request.body;
-    const query = 'INSERT INTO status_devices (name, date) VALUES (?, ?)';
-    connection.query(query, [name, date], (error, results) => {
+    const {id, status} = request.body;
+    const query = 'INSERT INTO status_devices (ID, STATUS) VALUES (?, ?)';
+    connection.query(query, [id, status], (error, results) => {
         if (error) {
           console.error('Erro ao inserir informações no banco de dados:', error);
           return response.status(500).json({error: 'Erro ao inserir informações no banco de dados.'});
         } else {
           console.log('Informações inseridas com sucesso no banco de dados.');
-          return response.json({name, date});
+          return response.json({id, status});
         }
       });
 })
